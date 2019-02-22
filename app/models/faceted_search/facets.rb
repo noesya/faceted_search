@@ -1,10 +1,16 @@
 module FacetedSearch
   class Facets
-    attr_accessor :list
+    attr_reader :list, :params
 
     def initialize(params)
-      @params = params.nil? ? {} 
-                            : params.to_unsafe_hash
+      if params.is_a? ActionController::Parameters
+        @params = params.to_unsafe_hash
+      elsif params.is_a? Hash
+        @params = params
+      else
+        @params = {}
+      end
+      @params.symbolize_keys!
       @list = []
       define
     end

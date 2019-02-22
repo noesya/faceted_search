@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> 5.2.2"
 
   spec.add_development_dependency "pg"
+  spec.add_development_dependency "byebug"
   spec.add_development_dependency "simple_form"
   spec.add_development_dependency "bootstrap"
   spec.add_development_dependency "kaminari"

@@ -3,8 +3,8 @@ module FacetedSearch
     def path_for(value)
       value = value.to_s
       custom_params = params_array.dup
-      selected?(value) ? custom_params.delete(value)
-                    : custom_params.push(value)
+      selected?(value)  ? custom_params.delete(value)
+                        : custom_params.push(value)
       path(custom_params.join(','))
     end
 

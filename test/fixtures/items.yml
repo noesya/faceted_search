@@ -1,0 +1,33 @@
+item_1:
+  title: 'Item 1'
+  categories:
+    - category_1
+  products:
+    - product_1
+  kinds:
+    - kind_2
+item_2:
+  title: 'Item 2'
+  products:
+    - product_2
+    - product_3
+item_3:
+  title: 'Item 3'
+  categories:
+    - category_2
+item_4:
+  title: 'Item 4'
+  kinds:
+    - kind_1
+    - kind_3
+item_5:
+  title: 'Item 5'
+  kinds:
+    - kind_1
+  products:
+    - product_1
+    - product_2
+item_6:
+  title: 'Item 6'
+  categories:
+    - category_3

@@ -20,3 +20,13 @@ i2.products = [p3, p2]
 
 i3 = Item.find_or_create_by title: "Item 3"
 i3.categories = [c2]
+
+i4 = Item.find_or_create_by title: "Item 4"
+i4.kinds = [k1, k3]
+
+i5 = Item.find_or_create_by title: "Item 5"
+i5.kinds = [k1]
+i5.products = [p1, p2]
+
+i6 = Item.find_or_create_by title: "Item 6"
+i6.categories = [c3]
