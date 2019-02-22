@@ -1,0 +1,8 @@
+<ul class="list-unstyled">
+  <% @facets.list.each do |facet| %>
+    <li class="mb-3">
+      <b><%= facet.title %></b>
+      <%= render facet.kind.underscore, facet: facet %>
+    </li>
+  <% end %>
+</ul>

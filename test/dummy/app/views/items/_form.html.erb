@@ -1,0 +1,7 @@
+<%= simple_form_for item  do |f| %>
+  <%= f.input :title %>
+  <%= f.association :categories %>
+  <%= f.association :kinds %>
+  <%= f.association :products %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,13 @@
+<ul class="list-unstyled">
+  <% facet.values.each do |value| %>
+    <%
+    identifier = value.send facet.find_by
+    selected = facet.selected? identifier
+    %>
+    <li>
+      <% if selected %><b><% end %>
+      <%= link_to value, @facets.path_for(facet, identifier) %>
+      <% if selected %></b><% end %>
+    </li>
+  <% end %>
+</ul>
