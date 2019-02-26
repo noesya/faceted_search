@@ -10,7 +10,7 @@ module FacetedSearch
       else
         @params = {}
       end
-      @params.symbolize_keys!
+      @parms = @params.symbolize_keys
       @list = []
       define
     end
