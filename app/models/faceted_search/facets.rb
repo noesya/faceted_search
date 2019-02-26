@@ -56,13 +56,14 @@ module FacetedSearch
                       facets: self))
     end
 
-    def filter(value, find_by: :id, source: nil, habtm: nil)
+    def filter(value, find_by: :id, source: nil, habtm: nil, title: nil)
       add(Filter.new( name: value,
                       params: params_for(value),
                       facets: self,
                       find_by: find_by,
                       source: source,
-                      habtm: habtm))
+                      habtm: habtm,
+                      title: title))
     end
 
     def params_for(value)

@@ -18,11 +18,8 @@ module FacetedSearch
 
     def add_scope(scope)
       return scope if params_array.blank?
-      if @habtm
-        scope.joins(name).where(name => { find_by => params_array })
-      else
-        scope.where(name => params_array)
-      end
+      @habtm  ? scope.joins(name).where(name => { find_by => params_array })
+              : scope.where(name => params_array)
     end
 
     def values

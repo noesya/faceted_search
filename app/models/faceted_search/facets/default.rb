@@ -2,8 +2,15 @@ module FacetedSearch
   class Facets::Default
     attr_reader :name, :params, :facets, :find_by
 
-    def initialize(name:, params:, facets:, find_by: nil, source: nil, habtm: false)
+    def initialize( name:,
+                    params:,
+                    facets:,
+                    find_by: nil,
+                    source: nil,
+                    habtm: false,
+                    title: nil)
       @name = name
+      @title = title
       @params = params
       @facets = facets
       @find_by = find_by
@@ -12,7 +19,7 @@ module FacetedSearch
     end
 
     def title
-      name.to_s.humanize.titleize
+      @title ||= name.to_s.humanize.titleize
     end
 
     def kind
