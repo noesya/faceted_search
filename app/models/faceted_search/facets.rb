@@ -12,7 +12,6 @@ module FacetedSearch
       end
       @parms = @params.symbolize_keys
       @list = []
-      define
     end
 
     def path
@@ -41,14 +40,6 @@ module FacetedSearch
     end
 
     protected
-
-    def define
-      # Override
-    end
-
-    def set_model(model)
-      @model = model
-    end
 
     def search(value)
       add(Search.new( name: value,
