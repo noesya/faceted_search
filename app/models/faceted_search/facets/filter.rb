@@ -29,7 +29,7 @@ module FacetedSearch
     # This is a regular SQL inner join.
     def values
       joined_table = @facets.model_table_name.to_sym
-      source.all.joins(joined_table).where(joined_table => { id: @facets.results }).distinct
+      source.all.joins(joined_table).where(joined_table => { id: @facets.model }).distinct
     end
 
     protected

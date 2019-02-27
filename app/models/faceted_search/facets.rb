@@ -1,6 +1,6 @@
 module FacetedSearch
   class Facets
-    attr_reader :list, :params
+    attr_reader :list, :params, :model
 
     def initialize(params)
       if params.is_a? ActionController::Parameters
