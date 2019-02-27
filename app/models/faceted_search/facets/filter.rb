@@ -26,10 +26,10 @@ module FacetedSearch
     end
 
     # Show all values that have corresponding results.
-    # FIXME This should be a SQL inner join.
+    # This is a regular SQL inner join.
     def values
-      join_table = @facets.model_table_name.to_sym
-      source.all.joins(join_table).where(join_table => { id: @facets.results }).distinct
+      joined_table = @facets.model_table_name.to_sym
+      source.all.joins(joined_table).where(joined_table => { id: @facets.results }).distinct
     end
 
     protected
