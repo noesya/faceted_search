@@ -1,5 +1,5 @@
 <% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>
-<form action="" class="faceted__facet--search form-inline"">
+<form action="" class="faceted__facet__search form-inline">
   <% facet.facets.list.each do |f| %>
     <% next if f == facet %>
     <% next if f.params.blank? %>
