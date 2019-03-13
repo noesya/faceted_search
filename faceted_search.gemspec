@@ -7,8 +7,8 @@ require "faceted_search/version"
 Gem::Specification.new do |spec|
   spec.name        = "faceted_search"
   spec.version     = FacetedSearch::VERSION
-  spec.authors     = ["Arnaud Levy"]
-  spec.email       = ["alevy@lespoupees.paris"]
+  spec.authors     = ["Arnaud Levy", "Sébastien Gaya"]
+  spec.email       = ["alevy@lespoupees.paris", "sebastien.gaya@gmail.com"]
   spec.homepage    = "http://github.com/lespoupeesrusses/faceted_search"
   spec.summary     = "Faceted search with Active Record"
   spec.description = "All you need to create a faceted search, as simply as possible"
