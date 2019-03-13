@@ -3,10 +3,12 @@
     <%
     identifier = value.send facet.find_by
     selected = facet.selected? identifier
+    results_count = facet.results_with(value).count
+    next if results_count.zero?
     %>
     <li>
       <% if selected %><b><% end %>
-      <%= link_to value, @facets.path_for(facet, identifier) %>
+      <%= link_to "#{value} (#{results_count})", @facets.path_for(facet, identifier) %>
       <% if selected %></b><% end %>
     </li>
   <% end %>
