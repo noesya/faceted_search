@@ -26,12 +26,13 @@ $ gem install faceted_search
 Create a model defining your facets:
 
     class Item::Facets < FacetedSearch::Facets
-      def define
-        set_model Item.all
+      def initialize(params)
+        super
+        @model = Item.all
         search :title
-        filter :products, find_by: :title
-        filter :kinds
-        filter :categories
+        filter :products, find_by: :title, habtm: true
+        filter :kinds, habtm: true
+        filter :categories, habtm: true
       end
     end
 
@@ -59,10 +60,6 @@ In your view, do something like that (with bootstrap):
         </div>
       </div>
     </div>
-
-
-## Contributing
-Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
