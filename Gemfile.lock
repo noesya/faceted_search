@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    faceted_search (1.1.4)
+    faceted_search (1.1.5)
       rails (~> 5.2.2)
 
 GEM
