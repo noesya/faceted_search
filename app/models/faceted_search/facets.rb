@@ -41,9 +41,10 @@ module FacetedSearch
 
     protected
 
-    def search(value)
+    def search(value, placeholder = nil)
       add(Search.new( name: value,
                       params: params_for(value),
+                      placeholder: placeholder,
                       facets: self))
     end
 

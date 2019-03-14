@@ -1,9 +1,9 @@
-<ul class="faceted__facet__filter list-unstyled">
+<ul class="faceted__facet--filter list-unstyled">
   <% facet.values.each do |value| %>
     <%
     identifier = value.send facet.find_by
     selected = facet.selected? identifier
-    results_count = facet.results_with(value).count
+    results_count = facet.results_with(identifier).count
     next if results_count.zero?
     %>
     <li class="faceted__facet__filter__value<%= '--selected' if selected %>">
