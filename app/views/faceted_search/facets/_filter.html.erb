@@ -7,7 +7,7 @@
     next if results_count.zero?
     %>
     <li class="faceted__facet__filter__value<%= '--selected' if selected %>">
-      <%= link_to "#{value} (#{results_count})", @facets.path_for(facet, identifier) %>
+      <%= link_to "#{value} (#{results_count})", facet.facets.path_for(facet, identifier) %>
     </li>
   <% end %>
 </ul>

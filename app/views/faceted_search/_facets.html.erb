@@ -1,9 +1,9 @@
 <ul class="faceted__facets list-unstyled">
-  <% @facets.list.each do |facet| %>
+  <% facets.list.each do |facet| %>
     <li>
       <b><%= facet.title %></b>
       <%= render facet.kind.underscore, facet: facet %>
     </li>
   <% end %>
-  <li class="faceted__facet__reinit"><a href="<%= @facets.path%>"><i class="fas fa-backspace"></i></a></li>
+  <li class="faceted__facet__reinit"><a href="<%= facets.path%>"><i class="fas fa-backspace"></i></a></li>
 </ul>
