@@ -1,5 +1,26 @@
 module FacetedSearch
   class Facets::Filter < Facets::Default
+    attr_reader :display_method
+
+    def initialize( name:,
+                    params:,
+                    facets:,
+                    display_method:,
+                    find_by: nil,
+                    source: nil,
+                    habtm: false,
+                    title: nil)
+      super(name: name,
+            title: title,
+            facets: facets,
+            params: params,
+            find_by: find_by,
+            source: source,
+            habtm: habtm,
+            title: title)
+      @display_method = display_method
+    end
+
     def path_for(value)
       value = value.to_s
       custom_params = params_array.dup

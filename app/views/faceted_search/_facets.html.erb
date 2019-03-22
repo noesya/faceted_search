@@ -1,7 +1,9 @@
 <ul class="faceted__facets list-unstyled">
   <% facets.list.each do |facet| %>
     <li>
-      <b><%= facet.title %></b>
+      <% unless facet.title.blank? %>
+        <b><%= facet.title %></b>
+      <% end %>
       <%= render facet.kind.underscore, facet: facet %>
     </li>
   <% end %>
