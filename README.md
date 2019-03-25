@@ -1,8 +1,7 @@
 # FacetedSearch
-Short description and motivation.
+All you need to create a faceted search, as simple as possible
 
-## Usage
-How to use my plugin.
+[![Maintainability](https://api.codeclimate.com/v1/badges/70579009d11cfa0d7cac/maintainability)](https://codeclimate.com/github/lespoupeesrusses/faceted_search/maintainability)
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -30,9 +29,16 @@ Create a model defining your facets:
         super
         @model = Item.all
         search :title
-        filter :products, find_by: :title, habtm: true
-        filter :kinds, habtm: true
-        filter :categories, habtm: true
+        filter :products, {
+            find_by: :title,
+            habtm: true
+        }
+        filter :kinds, {
+            habtm: true
+        }
+        filter :categories, {
+            habtm: true
+        }
       end
     end
 
