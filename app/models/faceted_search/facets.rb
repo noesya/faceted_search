@@ -41,21 +41,12 @@ module FacetedSearch
 
     protected
 
-    def search(value, placeholder: nil)
-      add(Search.new( name: value,
-                      params: params_for(value),
-                      placeholder: placeholder,
-                      facets: self))
+    def search(value, options)
+      add(Search.new(value, params_for(value), self, options))
     end
 
-    def filter(value, find_by: :id, source: nil, habtm: nil, title: nil)
-      add(Filter.new( name: value,
-                      params: params_for(value),
-                      facets: self,
-                      find_by: find_by,
-                      source: source,
-                      habtm: habtm,
-                      title: title))
+    def filter(value, options)
+      add(Filter.new(value, params_for(value), self, options))
     end
 
     def params_for(value)

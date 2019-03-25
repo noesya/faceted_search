@@ -1,25 +1,16 @@
 module FacetedSearch
   class Facets::Default
-    attr_reader :name, :params, :facets, :find_by
+    attr_reader :name, :params, :facets
 
-    def initialize( name:,
-                    params:,
-                    facets:,
-                    find_by: nil,
-                    source: nil,
-                    habtm: false,
-                    title: nil)
+    def initialize(name, params, facets, options)
       @name = name
-      @title = title
       @params = params
       @facets = facets
-      @find_by = find_by
-      @source = source
-      @habtm = habtm
+      @options = options
     end
 
     def title
-      @title ||= name.to_s.humanize.titleize
+      @options[:title] || name.to_s.humanize.titleize
     end
 
     def kind
@@ -37,7 +28,7 @@ module FacetedSearch
 
     def path(custom_params = @params)
       return '' if custom_params.blank?
-      "&facets[#{@name}]=#{custom_params}"
+      "&facets[#{name}]=#{custom_params}"
     end
 
     def to_s
