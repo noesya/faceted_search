@@ -50,6 +50,10 @@ module FacetedSearch
       path(custom_params.join(','))
     end
 
+    def source
+      @options[:source] || name.to_s.singularize.titleize.constantize.send(:all)
+    end
+
     protected
 
     def params_array
@@ -62,10 +66,6 @@ module FacetedSearch
     def add_scope_with_value(scope, value)
       habtm?  ? scope.joins(name).where(name => { find_by => value })
               : scope.where(name => value)
-    end
-
-    def source
-      @options[:source] || name.to_s.singularize.titleize.constantize
     end
 
     def habtm?

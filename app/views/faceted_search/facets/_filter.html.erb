@@ -1,13 +1,39 @@
-<ul class="faceted__facet__filter<%= '--tree' if facet.tree? %> list-unstyled">
-  <% facet.values.each do |value| %>
-    <%
-    identifier = value.send facet.find_by
-    results_count = facet.results_with(identifier).count
-    display_value = facet.display_method.call(value)
-    next if results_count.zero?
-    %>
-    <li class="faceted__facet__filter__value<%= '--selected' if facet.value_selected?(identifier) %>">
-      <%= link_to "#{display_value} (#{results_count})", facet.facets.path_for(facet, identifier) %>
-    </li>
-  <% end %>
-</ul>
+<% if facet.tree? %>
+  <div class="faceted__facet__filter--tree">
+    <div class="dd">
+      <ol class="faceted__facet__filter--tree__level dd-list">
+        <% facet.source.each do |object| %>
+          <%
+          identifier = object.send facet.find_by
+          results_count = facet.results_with(identifier).count
+          facet_url = facet.facets.path_for(facet, identifier)
+          display_value = facet.display_method.call(object)
+          selected = facet.value_selected?(identifier)
+          parent_id = object.parent_id.nil? ? 0 : object.parent_id
+          %>
+          <li data-parent="<%= parent_id %>"
+              data-id="<%= object.id %>"
+              data-selected="<%= selected %>"
+              data-url="<%= facet_url %>"
+              data-count="<%= results_count %>">
+            <%= display_value %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+<% else %>
+  <ul class="faceted__facet__filter list-unstyled">
+    <% facet.values.each do |value| %>
+      <%
+      identifier = value.send facet.find_by
+      results_count = facet.results_with(identifier).count
+      display_value = facet.display_method.call(value)
+      next if results_count.zero?
+      %>
+      <li class="faceted__facet__filter__value<%= '--selected' if facet.value_selected?(identifier) %>">
+        <%= link_to "#{display_value} (#{results_count})", facet.facets.path_for(facet, identifier) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
