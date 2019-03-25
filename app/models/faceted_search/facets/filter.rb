@@ -9,6 +9,10 @@ module FacetedSearch
       @options[:tree]
     end
 
+    def display_method
+      @options[:display_method] ||= Proc.new { |object| object.to_s }
+    end
+
     # Adds a scope corresponding to this facet
     # to the scope sent as an argument
     # and return the modified scope
@@ -46,7 +50,7 @@ module FacetedSearch
       value = value.to_s
       custom_params = params_array.dup
       value_selected?(value)  ? custom_params.delete(value)
-                        : custom_params.push(value)
+                              : custom_params.push(value)
       path(custom_params.join(','))
     end
 
