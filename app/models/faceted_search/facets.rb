@@ -41,11 +41,11 @@ module FacetedSearch
 
     protected
 
-    def search(value, options)
+    def search(value, options = {})
       add(Search.new(value, params_for(value), self, options))
     end
 
-    def filter(value, options)
+    def filter(value, options = {})
       add(Filter.new(value, params_for(value), self, options))
     end
 

@@ -1,10 +1,6 @@
 module FacetedSearch
   class Facets::Filter < Facets::Default
 
-    def title
-      @options[:title]
-    end
-
     def tree?
       @options[:tree]
     end
