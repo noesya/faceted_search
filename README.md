@@ -79,5 +79,10 @@ In your view, do something like that (with bootstrap):
       </div>
     </div>
 
+If you need, you can add an anchor to the links:
+
+    <%= render 'faceted_search/facets', facets: @facets, anchor: "#identifier" %>
+
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
