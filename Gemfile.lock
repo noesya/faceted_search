@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    faceted_search (2.1.1)
+    faceted_search (2.2.0)
       font-awesome-sass
       nestable-rails
       rails (~> 5.2.2)
