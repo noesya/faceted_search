@@ -40,16 +40,32 @@ window.facetedSearch.Tree.prototype.generateItem = function (item) {
     liNode.className = item.selected ? "dd-item dd-item--selected"
                                      : "dd-item";
 
-    var aNode = document.createElement('a');
-    aNode.setAttribute("href", item.url);
-    aNode.textContent = item.title;
+    var iconNode = null;
+    iconNode = document.createElement('i');
+    iconNode.className = "back-link fas fa-arrow-left";
+    var titleNode = document.createTextNode(item.title);
 
-    liNode.appendChild(aNode);
+    var itemContent = document.createDocumentFragment();
+    if (item.back === "true") {
+        itemContent.appendChild(iconNode);
+    }
+    itemContent.appendChild(titleNode);
+
+    if (item.url !== "") {
+        var aNode = document.createElement('a');
+        aNode.setAttribute("href", item.url);
+        aNode.appendChild(itemContent);
+        liNode.appendChild(aNode);
+    } else {
+        liNode.appendChild(itemContent);
+    }
+
 
     if (item.children.length > 0) {
         var olNode = this.generateList(item.children);
         liNode.appendChild(olNode);
     }
+
 
     return liNode;
 };
@@ -82,6 +98,7 @@ window.facetedSearch.Tree.prototype.initDOM = function () {
             selected: elt.getAttribute('data-selected') === "true",
             resultsCount: parseInt(elt.getAttribute('data-count'), 10),
             url: elt.getAttribute('data-url'),
+            back: elt.getAttribute('data-back'),
             title: elt.textContent.trim()
         };
     });
@@ -103,9 +120,9 @@ window.facetedSearch.Tree.prototype.initNestable = function () {
     "use strict";
 
     $('.dd', this.wrapper).nestable({
-        expandBtnHTML: '<button class="dd-expand-btn" data-action="expand" type="button"><i class="fas fa-folder"></i></button>',
-        collapseBtnHTML: '<button class="dd-collapse-btn" data-action="collapse" type="button"><i class="fas fa-folder-open"></i></button>'
-    }).data("nestable").collapseAll();
+        expandBtnHTML: '',
+        collapseBtnHTML: ''
+    }).data("nestable");
 };
 
 window.addEventListener('DOMContentLoaded', function () {
