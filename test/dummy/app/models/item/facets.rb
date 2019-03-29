@@ -11,7 +11,8 @@ class Item::Facets < FacetedSearch::Facets
       habtm: true
     }
     filter :categories, {
-      habtm: true
+      habtm: true,
+      tree: true
     }
   end
 end

@@ -37,8 +37,10 @@ window.facetedSearch.Tree.prototype.generateItem = function (item) {
 
     var liNode = document.createElement('li');
 
-    liNode.className = item.selected ? "dd-item dd-item--selected"
-                                     : "dd-item";
+    liNode.classList.add("faceted__facet__filter--tree__item");
+    if (item.selected) {
+        liNode.classList.add("faceted__facet__filter--tree__item--selected");
+    }
 
     var iconNode = null;
     iconNode = document.createElement('i');
@@ -77,7 +79,7 @@ window.facetedSearch.Tree.prototype.generateList = function (array) {
         liNode,
         i;
 
-    olNode.className = "faceted__facet__filter--tree__level dd-list";
+    olNode.className = "faceted__facet__filter--tree__level";
 
     for (i = 0; i < array.length; i += 1) {
         liNode = this.generateItem(array[i]);
@@ -106,23 +108,10 @@ window.facetedSearch.Tree.prototype.initDOM = function () {
     this.data = this.unflatten(listData);
     var treeNode = this.generateList(this.data);
 
-    var rootElt = document.createElement('div');
-    rootElt.className = 'dd';
-    rootElt.appendChild(treeNode);
-
     while (this.wrapper.firstChild) {
         this.wrapper.removeChild(this.wrapper.firstChild);
     }
-    this.wrapper.appendChild(rootElt);
-};
-
-window.facetedSearch.Tree.prototype.initNestable = function () {
-    "use strict";
-
-    $('.dd', this.wrapper).nestable({
-        expandBtnHTML: '',
-        collapseBtnHTML: ''
-    }).data("nestable");
+    this.wrapper.appendChild(treeNode);
 };
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -134,6 +123,5 @@ window.addEventListener('DOMContentLoaded', function () {
     for (i = 0; i < facetedTreeElts.length; i += 1) {
         facetedTree = new window.facetedSearch.Tree(facetedTreeElts[i]);
         facetedTree.initDOM();
-        facetedTree.initNestable();
     }
 });
