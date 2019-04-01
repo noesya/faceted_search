@@ -1,0 +1,31 @@
+<div class="faceted__facet__filter--tree">
+  <div class="dd">
+    <ol class="faceted__facet__filter--tree__level dd-list">
+      <% facet.tree_values.each_with_index do |object, index| %>
+        <%
+        identifier = object.send facet.find_by
+        selected = facet.value_selected?(identifier)
+        facet_url = selected ? '' : facet.facets.path_for(facet, identifier)
+        parent_id = object.parent_id.nil? ? 0 : object.parent_id
+        back = facet.has_params? && index == 0 && parent_id != 0 && !selected
+        display_value = facet.display_method.call(object)
+        %>
+        <% if facet.has_params? && index == 0 && parent_id == 0 %>
+          <li data-parent="0"
+              data-id="-1"
+              data-back="true"
+              data-selected="false"
+              data-url="<%= facet.facets.path_for(facet, '') %>">
+          </li>
+        <% end %>
+        <li data-parent="<%= back ? 0 : parent_id %>"
+            data-id="<%= object.id %>"
+            data-back="<%= back %>"
+            data-selected="<%= selected %>"
+            data-url="<%= facet_url %>">
+          <%= display_value %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>

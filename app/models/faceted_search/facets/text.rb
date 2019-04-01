@@ -1,5 +1,5 @@
 module FacetedSearch
-  class Facets::Search < Facets::Default
+  class Facets::Text < Facets::Default
 
     def placeholder
       @options[:placeholder]

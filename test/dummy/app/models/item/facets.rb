@@ -2,17 +2,16 @@ class Item::Facets < FacetedSearch::Facets
   def initialize(params)
     super
     @model = Item.all
-    search :title
-    filter :products, {
+    filter_with_text :title
+    filter_with_list :products, {
       find_by: :title,
       habtm: true
     }
-    filter :kinds, {
+    filter_with_list :kinds, {
       habtm: true
     }
-    filter :categories, {
-      habtm: true,
-      tree: true
+    filter_with_tree :categories, {
+      habtm: true
     }
   end
 end
