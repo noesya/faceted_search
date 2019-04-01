@@ -44,7 +44,10 @@ Create a model defining your facets:
           habtm: true
         }
         filter_with_tree :categories, {
-          habtm: true
+          habtm: true,
+          children_scope: Proc.new { |children|
+            children.order(:title)
+          }
         }
       end
     end
