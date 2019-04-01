@@ -1,7 +1,12 @@
 @import 'bootstrap'
 @import 'font-awesome-sprockets'
 @import 'font-awesome'
-@import 'faceted_search'
 
-.faceted__facet__filter__value--selected
-    font-weight: bold
+.faceted
+    &__facet
+        &__text, &__list, &__tree
+            &__value
+                &--selected
+                    font-weight: bold
+        &__tree--selected &__tree__values
+            margin-left: 15px

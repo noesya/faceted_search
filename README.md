@@ -22,16 +22,11 @@ $ gem install faceted_search
 
 ## Getting started
 
-Add to your `app/assets/stylesheets/application.sass`
+Add Bootstrap and Font Awesome to your `app/assets/stylesheets/application.sass`
 ```
+@import 'bootstrap'
 @import 'font-awesome-sprockets'
 @import 'font-awesome'
-@import 'faceted_search'
-```
-
-And to your `app/assets/javascripts/application.js`
-```
-//= require faceted_search
 ```
 
 Create a model defining your facets:

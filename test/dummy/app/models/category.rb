@@ -9,8 +9,6 @@
 #
 
 class Category < ApplicationRecord
-  include ActsAsTree
-
   has_and_belongs_to_many :items
   belongs_to  :parent,
               optional: true,
@@ -18,6 +16,8 @@ class Category < ApplicationRecord
   has_many    :children,
               class_name: 'Category',
               foreign_key: :parent_id
+
+  scope :root, -> { where(parent: nil) }
 
   def to_s
     "#{title}"
