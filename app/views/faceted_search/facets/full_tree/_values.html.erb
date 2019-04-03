@@ -1,0 +1,16 @@
+<% values.each do |value| %>
+  <%
+  display_value = facet.display_method.call(value)
+  identifier = value.send facet.find_by
+  path = facet.facets.path_for(facet, identifier)
+  %>
+  <li class="faceted__facet__full_tree__value<%= '--selected' if facet.value_selected?(identifier) %>">
+    <%= link_to display_value, path %>
+    <% child_values = facet.child_values(value) %>
+    <% if child_values.any? %>
+      <ol>
+        <%= render 'faceted_search/facets/full_tree/values', values: child_values, facet: facet %>
+      </ol>
+    <% end %>
+  </li>
+<% end %>
