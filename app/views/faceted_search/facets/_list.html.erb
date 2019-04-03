@@ -1,11 +1,16 @@
-<ol class="faceted__facet__list list-unstyled">
-  <% facet.values.each do |value| %>
-    <%
-    identifier = value.send facet.find_by
-    display_value = facet.display_method.call(value)
-    %>
-    <li class="faceted__facet__list__value<%= '--selected' if facet.value_selected?(identifier) %>">
-      <%= link_to display_value, facet.facets.path_for(facet, identifier) + anchor %>
-    </li>
-  <% end %>
-</ol>
+<% if facet.values.any? %>
+  <li>
+    <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+    <ol class="faceted__facet__list list-unstyled">
+      <% facet.values.each do |value| %>
+        <%
+        identifier = value.send facet.find_by
+        display_value = facet.display_method.call(value)
+        %>
+        <li class="faceted__facet__list__value<%= '--selected' if facet.value_selected?(identifier) %>">
+          <%= link_to display_value, facet.facets.path_for(facet, identifier) + anchor %>
+        </li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>

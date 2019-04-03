@@ -1,5 +1,8 @@
-<div class="faceted__facet__full_tree">
-  <ol class="faceted__facet__full_tree__values list-unstyled ">
-    <%= render 'faceted_search/facets/full_tree/values', values: facet.values, facet: facet %>
-  </ol>
-</div>
+<% if facet.values.any? %>
+  <li>
+    <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+    <ol class="faceted__facet__full_tree list-unstyled ">
+      <%= render 'faceted_search/facets/full_tree/values', values: facet.values, facet: facet %>
+    </ol>
+  </li>
+<% end %>

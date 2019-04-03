@@ -89,5 +89,23 @@ If you need, you can add an anchor to the links:
     <%= render 'faceted_search/facets', facets: @facets, anchor: "#identifier" %>
 
 
+## Note about full tree
+
+Tagging must be logical in order to use filter_with_full_tree.
+With these categories:
+
+    Blues
+        Chicago blues
+        Delta Blues
+        Memphis Blues
+    Jazz
+        Free jazz
+        Swing
+        Latin jazz
+
+If something is tagged as "Delta blues", it MUST be tagged as "Blues" as well.
+Otherwise, it creates very odd comportments (selecting "Blues" does not show the object, whereas it is "Delta blues").
+There is no inference whatsoever, so the data MUST be clean.
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

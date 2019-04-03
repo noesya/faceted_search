@@ -32,7 +32,7 @@ module FacetedSearch
       list.each do |facet|
         scope = facet.add_scope(scope)
       end
-      scope
+      scope.distinct
     end
 
     def model_table_name

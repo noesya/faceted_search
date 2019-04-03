@@ -1,18 +1,21 @@
-<% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>
-<form action="<%= anchor %>" class="faceted__facet__text form-inline">
-  <% facet.facets.list.each do |f| %>
-    <% next if f == facet %>
-    <% next if f.params.blank? %>
-    <input  type="hidden"
-            name="facets[<%= f.name %>]"
-            value="<%= f.params %>" />
-  <% end %>
-  <input  type="search"
-          name="facets[<%= facet.name %>]"
-          placeholder="<%= facet.placeholder %>"
-          value="<%= value %>"
-          class="form-control" />
-  <input  type="submit"
-          class="btn btn-light"
-          value="OK" />
-</form>
+<li>
+  <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+  <% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>
+  <form action="<%= anchor %>" class="faceted__facet__text form-inline">
+    <% facet.facets.list.each do |f| %>
+      <% next if f == facet %>
+      <% next if f.params.blank? %>
+      <input  type="hidden"
+              name="facets[<%= f.name %>]"
+              value="<%= f.params %>" />
+    <% end %>
+    <input  type="search"
+            name="facets[<%= facet.name %>]"
+            placeholder="<%= facet.placeholder %>"
+            value="<%= value %>"
+            class="form-control" />
+    <input  type="submit"
+            class="btn btn-light"
+            value="OK" />
+  </form>
+</li>

@@ -4,12 +4,7 @@ reset ||= 'Reset'
 %>
 <ul class="faceted__facets list-unstyled">
   <% facets.list.each do |facet| %>
-    <li>
-      <% unless facet.title.blank? %>
-        <b><%= facet.title %></b>
-      <% end %>
-      <%= render facet.kind.underscore, facet: facet, anchor: anchor %>
-    </li>
+    <%= render facet.kind.underscore, facet: facet, anchor: anchor %>
   <% end %>
   <li class="faceted__facet__reinit">
     <a href="<%= facets.path%>">

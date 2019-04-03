@@ -5,11 +5,18 @@ module FacetedSearch
     end
 
     def child_values(value)
-      children_scope.call value.children
+      filtered children_scope.call(value.children)
     end
 
     def values
-      source.root
+      filtered source.root
+    end
+
+    protected
+
+    def filtered(list)
+      joined_table = facets.model_table_name.to_sym
+      list.joins(joined_table).where(joined_table => { id: facets.results }).distinct
     end
   end
 end

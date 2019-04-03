@@ -1,27 +1,32 @@
-<div class="faceted__facet__tree<% if facet.selected_object %> faceted__facet__tree--selected<% end %>">
-  <% if facet.selected_object %>
-    <%
-    display_value = facet.display_method.call(facet.selected_object)
-    identifier = facet.selected_object.send facet.find_by
-    path = facet.facets.path_for(facet, identifier)
-    %>
-    <div class="faceted__facet__tree__back">
-      <%= link_to path do %>
-        <i class="fas fa-arrow-left"></i> <%= display_value %>
+<% if facet.values.any? %>
+  <li>
+    <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+    <div class="faceted__facet__tree<% if facet.selected_object %> faceted__facet__tree--selected<% end %>">
+      <% if facet.selected_object %>
+        <%
+        display_value = facet.display_method.call(facet.selected_object)
+        identifier = facet.selected_object.send facet.find_by
+        path = facet.facets.path_for(facet, identifier)
+        %>
+        <div class="faceted__facet__tree__back">
+          <%= link_to path do %>
+            <i class="fas fa-arrow-left"></i> <%= display_value %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
 
-  <ol class="faceted__facet__tree__values list-unstyled ">
-    <% facet.values.each do |value| %>
-      <%
-      display_value = facet.display_method.call(value)
-      identifier = value.send facet.find_by
-      path = facet.facets.path_for(facet, identifier)
-      %>
-      <li class="faceted__facet__tree__value">
-        <%= link_to display_value, path %>
-      </li>
-    <% end %>
-  </ol>
-</div>
+      <ol class="faceted__facet__tree__values list-unstyled ">
+        <% facet.values.each do |value| %>
+          <%
+          display_value = facet.display_method.call(value)
+          identifier = value.send facet.find_by
+          path = facet.facets.path_for(facet, identifier)
+          %>
+          <li class="faceted__facet__tree__value">
+            <%= link_to display_value, path %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </li>
+<% end %>

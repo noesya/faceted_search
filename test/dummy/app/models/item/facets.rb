@@ -3,14 +3,14 @@ class Item::Facets < FacetedSearch::Facets
     super
     @model = Item.all
     filter_with_text :title
+    filter_with_full_tree :categories, {
+      habtm: true
+    }
     filter_with_list :products, {
       find_by: :title,
       habtm: true
     }
     filter_with_list :kinds, {
-      habtm: true
-    }
-    filter_with_full_tree :categories, {
       habtm: true
     }
   end
