@@ -49,6 +49,13 @@ Create a model defining your facets:
             children.order(:title)
           }
         }
+        # Other tree option, shows all values
+        # filter_with_full_tree :categories, {
+        #   habtm: true,
+        #   children_scope: Proc.new { |children|
+        #     children.order(:title)
+        #   }
+        # }
       end
     end
 

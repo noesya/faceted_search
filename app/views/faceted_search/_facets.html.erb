@@ -1,5 +1,6 @@
 <%
 anchor ||= ''
+reset ||= 'Reset'
 %>
 <ul class="faceted__facets list-unstyled">
   <% facets.list.each do |facet| %>
@@ -10,5 +11,10 @@ anchor ||= ''
       <%= render facet.kind.underscore, facet: facet, anchor: anchor %>
     </li>
   <% end %>
-  <li class="faceted__facet__reinit"><a href="<%= facets.path%>"><i class="fas fa-ban"></i></a></li>
+  <li class="faceted__facet__reinit">
+    <a href="<%= facets.path%>">
+      <i class="fas fa-ban"></i>
+      <%= reset %>
+    </a>
+  </li>
 </ul>

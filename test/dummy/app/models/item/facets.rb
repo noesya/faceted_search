@@ -10,7 +10,7 @@ class Item::Facets < FacetedSearch::Facets
     filter_with_list :kinds, {
       habtm: true
     }
-    filter_with_tree :categories, {
+    filter_with_full_tree :categories, {
       habtm: true
     }
   end

@@ -13,14 +13,15 @@
   <% end %>
 
   <ol class="faceted__facet__tree__values list-unstyled ">
-  <% facet.values.each do |value| %>
-    <%
-    display_value = facet.display_method.call(value)
-    identifier = value.send facet.find_by
-    path = facet.facets.path_for(facet, identifier)
-    %>
-    <li class="faceted__facet__tree__value">
-      <%= link_to display_value, path %>
-    </li>
-  <% end %>
+    <% facet.values.each do |value| %>
+      <%
+      display_value = facet.display_method.call(value)
+      identifier = value.send facet.find_by
+      path = facet.facets.path_for(facet, identifier)
+      %>
+      <li class="faceted__facet__tree__value">
+        <%= link_to display_value, path %>
+      </li>
+    <% end %>
+  </ol>
 </div>

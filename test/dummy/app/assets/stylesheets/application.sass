@@ -4,9 +4,13 @@
 
 .faceted
     &__facet
-        &__text, &__list, &__tree
+        &__text, &__list, &__tree, &__full_tree
             &__value
                 &--selected
                     font-weight: bold
+
         &__tree--selected &__tree__values
             margin-left: 15px
+
+        &__full_tree__value--selected &__full_tree__value
+            font-weight: normal
