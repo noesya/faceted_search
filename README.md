@@ -107,5 +107,8 @@ If something is tagged as "Delta blues", it MUST be tagged as "Blues" as well.
 Otherwise, it creates very odd comportments (selecting "Blues" does not show the object, whereas it is "Delta blues").
 There is no inference whatsoever, so the data MUST be clean.
 
+The HTML code is ready for [Nestable2](https://github.com/RamonSmit/Nestable2) implementation. If you want to use this library, add the [CSS](https://github.com/RamonSmit/Nestable2/blob/master/dist/jquery.nestable.min.css) & [JS](https://github.com/RamonSmit/Nestable2/blob/master/dist/jquery.nestable.min.js) in your `vendor` folder and import them in `application.sass` & `application.js`.
+
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

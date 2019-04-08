@@ -1,8 +1,12 @@
 <% if facet.values.any? %>
   <li>
     <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
-    <ol class="faceted__facet__full_tree list-unstyled ">
-      <%= render 'faceted_search/facets/full_tree/values', values: facet.values, facet: facet %>
-    </ol>
+    <div class="static-nestable-list">
+      <div class="dd">
+        <ol class="faceted__facet__full_tree list-unstyled dd-list">
+          <%= render 'faceted_search/facets/full_tree/values', values: facet.values, facet: facet %>
+        </ol>
+      </div>
+    </div>
   </li>
 <% end %>
