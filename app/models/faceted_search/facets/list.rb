@@ -6,7 +6,7 @@ module FacetedSearch
     def values
       unless @values
         joined_table = facets.model_table_name.to_sym
-        @values = source.all.joins(joined_table).where(joined_table => { id: facets.results }).distinct
+        @values = source.all.joins(joined_table).where(joined_table => { id: facets.model }).distinct
       end
       @values
     end

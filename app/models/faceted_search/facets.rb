@@ -49,6 +49,10 @@ module FacetedSearch
       add_facet List, value, options
     end
 
+    def filter_with_checkboxes(value, options = {})
+      add_facet Checkboxes, value, options
+    end
+
     def filter_with_tree(value, options = {})
       add_facet Tree, value, options
     end

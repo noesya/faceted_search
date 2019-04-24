@@ -1,0 +1,22 @@
+<% if facet.values.any? %>
+  <li>
+    <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+    <ul class="faceted__facet__checkboxes list-unstyled">
+      <% facet.values.each do |value| %>
+        <%
+        identifier = value.send facet.find_by
+        name = facet.display_method.call(value)
+        path = facet.facets.path_for(facet, identifier) + anchor
+        selected = facet.value_selected?(identifier)
+        %>
+        <li class="faceted__facet__checkboxes__value<%= '--selected' if selected %>">
+          <input  type="checkbox"
+                  onclick="window.location.href='<%= path %>'"
+                  <%= 'checked' if selected %>
+                  />
+          <%= link_to name, path %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
