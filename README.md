@@ -59,10 +59,13 @@ Create a model defining your facets:
       end
     end
 
+Warning: do not provide model with order, as it messes with the distinct used in the facet computations.
+
 In your controller, use it:
 
     @facets = Item::Facets.new params[:facets]
     @items = @facets.results.order(:title).page params[:page]
+
 
 In your view, do something like that (with bootstrap):
 
