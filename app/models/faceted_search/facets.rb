@@ -45,6 +45,10 @@ module FacetedSearch
       add_facet Text, value, options
     end
 
+    def filter_with_date(value, options = {})
+      add_facet FacetedSearch::Facets::Date, value, options
+    end
+
     def filter_with_list(value, options = {})
       add_facet List, value, options
     end

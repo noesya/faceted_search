@@ -1,0 +1,12 @@
+<% if facet.values.any? %>
+  <li>
+    <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+    <ol class="faceted__facet__date list-unstyled">
+      <% facet.values.each do |year| %>
+        <li class="faceted__facet__date__value <%= 'faceted__facet__date__value--selected' if facet.value_selected?(year) %>">
+          <%= link_to year, facet.facets.path_for(facet, year) + anchor %>
+        </li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>
