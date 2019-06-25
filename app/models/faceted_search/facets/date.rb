@@ -5,6 +5,10 @@ module FacetedSearch
       @options[:source] || @facets.model.send(:all).pluck(name).compact.map(&:year).uniq.sort
     end
 
+    def order
+      @options[:order]&.to_sym || :asc
+    end
+
     def add_scope(scope)
       return scope if params_array.blank?
 
@@ -15,7 +19,11 @@ module FacetedSearch
     end
 
     def values
-      @values ||= source
+      unless @values
+        @values = source
+        @values.reverse! unless order == :asc
+      end
+      @values
     end
   end
 end
