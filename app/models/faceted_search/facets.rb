@@ -53,6 +53,10 @@ module FacetedSearch
       add_facet List, value, options
     end
 
+    def filter_with_primitive_list(value, options = {})
+      add_facet PrimitiveList, value, options
+    end
+
     def filter_with_checkboxes(value, options = {})
       add_facet Checkboxes, value, options
     end
