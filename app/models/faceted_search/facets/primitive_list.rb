@@ -14,10 +14,10 @@ module FacetedSearch
     end
 
     def add_scope(scope)
-      return scope if params_array.blank?
+      return scope if params_array.compact.blank?
       scope.where(
         "#{field} IN (?)",
-        params_array
+        params_array.compact
       )
     end
 
