@@ -2,7 +2,7 @@ module FacetedSearch
   class Facets::PrimitiveList < Facets::DefaultList
 
     def source
-      @options[:source]
+      @options[:source].where("#{field} IS NOT NULL")
     end
 
     def order
