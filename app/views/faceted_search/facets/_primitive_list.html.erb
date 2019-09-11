@@ -2,9 +2,8 @@
   <li>
     <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
     <ul class="faceted__facet__checkboxes list-unstyled">
-      <% facet.values.each do |value| %>
+      <% facet.values.each do |identifier| %>
         <%
-        identifier = value[facet.field]
         path = facet.facets.path_for(facet, identifier) + anchor
         selected = facet.value_selected?(identifier)
         %>
