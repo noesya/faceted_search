@@ -23,7 +23,7 @@ module FacetedSearch
 
     def values
       unless @values
-        @values = source.pluck(field).uniq
+        @values = source.pluck(field).uniq.sort
         @values.reverse! unless order == :asc
       end
       @values
