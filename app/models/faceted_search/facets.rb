@@ -28,11 +28,14 @@ module FacetedSearch
     end
 
     def results
-      scope = @model
-      list.each do |facet|
-        scope = facet.add_scope(scope)
+      unless @results
+        scope = @model
+        list.each do |facet|
+          scope = facet.add_scope(scope)
+        end
+        @results = scope.distinct
       end
-      scope.distinct
+      @results
     end
 
     def model_table_name
