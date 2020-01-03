@@ -1,8 +1,6 @@
 <li class=" faceted__facet-selected
-            list-inline-item
-            badge
-            badge-light">
-  <%= link_to path do %>
+            list-inline-item">
+  <%= link_to path, class: 'badge badge-light' do %>
     <% unless title %>
       <span class="faceted__facet-selected__title d-none">
         <%= title %>
