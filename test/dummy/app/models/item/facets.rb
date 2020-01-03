@@ -10,7 +10,7 @@ class Item::Facets < FacetedSearch::Facets
       find_by: :title,
       habtm: true
     }
-    filter_with_list :kinds, {
+    filter_with_checkboxes :kinds, {
       habtm: true
     }
   end

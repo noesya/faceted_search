@@ -1,0 +1,12 @@
+<% if facet.values.any? %>
+  <% facet.values.each do |value| %>
+    <% identifier = value.send facet.find_by %>
+    <% if facet.value_selected?(identifier) %>
+      <% display_value = facet.display_method.call(value) %>
+      <%= render 'faceted_search/facets/facet-selected',
+                  title: facet.title,
+                  value: display_value,
+                  path: facet.facets.path_for(facet, identifier) %>
+    <% end %>
+  <% end %>
+<% end %>

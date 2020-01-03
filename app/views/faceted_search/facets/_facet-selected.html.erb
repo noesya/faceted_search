@@ -1,0 +1,15 @@
+<li class=" faceted__facet-selected
+            list-inline-item
+            badge
+            badge-light">
+  <%= link_to path do %>
+    <% unless title %>
+      <span class="faceted__facet-selected__title d-none">
+        <%= title %>
+      </span>
+    <% end %>
+    <span class="faceted__facet-selected__value">
+      <%= value %>
+    </span>
+  <% end %>
+</li>

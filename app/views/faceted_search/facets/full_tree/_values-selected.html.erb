@@ -1,0 +1,15 @@
+<% values.each do |value| %>
+  <% identifier = value.send facet.find_by %>
+  <% if facet.value_selected?(identifier) %>
+    <%= render 'faceted_search/facets/facet-selected',
+                title: facet.title,
+                value: facet.display_method.call(value),
+                path: facet.facets.path_for(facet, identifier) %>
+  <% end %>
+  <% child_values = facet.values_with_parent(value.id) %>
+  <% if child_values.any? %>
+    <%= render  'faceted_search/facets/full_tree/values-selected',
+                values: child_values,
+                facet: facet %>
+  <% end %>
+<% end %>
