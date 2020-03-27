@@ -42,6 +42,10 @@ module FacetedSearch
       @model.table_name
     end
 
+    def has_params?
+      params.values.select(&:present?).any?
+    end
+
     protected
 
     def filter_with_text(value, options = {})

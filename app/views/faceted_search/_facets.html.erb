@@ -3,12 +3,14 @@ anchor ||= ''
 reset ||= 'Reset'
 %>
 
-<ul class="faceted__facets-selected list-inline">
-  <% facets.list.each do |facet| %>
-    <% partial = "#{facet.kind.underscore}/selected" %>
-    <%= render partial, facet: facet %>
-  <% end %>
-</ul>
+<% if facets.has_params? %>
+  <ul class="faceted__facets-selected list-inline">
+    <% facets.list.each do |facet| %>
+      <% partial = "#{facet.kind.underscore}/selected" %>
+      <%= render partial, facet: facet %>
+    <% end %>
+  </ul>
+<% end %>
 
 <ul class="faceted__facets list-unstyled">
   <% facets.list.each do |facet| %>
@@ -16,7 +18,7 @@ reset ||= 'Reset'
     <%= render partial, facet: facet, anchor: anchor %>
   <% end %>
   <li class="faceted__facet__reinit">
-    <a href="<%= facets.path%>">
+    <a href="<%= facets.path %>">
       <i class="fas fa-ban"></i>
       <%= reset %>
     </a>

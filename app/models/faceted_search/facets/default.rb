@@ -18,7 +18,7 @@ module FacetedSearch
     end
 
     def path_for(value)
-      "&facets[#{name}]=#{value}"
+      path(value)
     end
 
     def add_scope(scope)
