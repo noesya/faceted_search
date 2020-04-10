@@ -3,7 +3,7 @@ PATH
   specs:
     faceted_search (3.4.3)
       font-awesome-sass
-      rails (~> 5.2.2)
+      rails (>= 5.2.0, < 6.1)
 
 GEM
   remote: https://rubygems.org/
