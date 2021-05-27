@@ -12,7 +12,10 @@
                   onclick="window.location.href='<%= path %>'"
                   <%= 'checked' if selected %>
                   />
-          <%= render 'faceted_search/link', display_value: identifier, path: path, searchable: facet.searchable %>
+          <%= render 'faceted_search/link',
+                     display_value: identifier,
+                     path: path,
+                     searchable: facet.searchable %>
         </li>
       <% end %>
     </ul>

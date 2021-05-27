@@ -4,7 +4,10 @@
     <ol class="faceted__facet__date list-unstyled">
       <% facet.values.each do |year| %>
         <li class="faceted__facet__date__value <%= 'faceted__facet__date__value--selected' if facet.value_selected?(year) %>">
-          <%= render 'faceted_search/link', display_value: year, path: facet.facets.path_for(facet, year) + anchor, searchable: facet.searchable %>
+          <%= render 'faceted_search/link',
+                     display_value: year,
+                     path: facet.facets.path_for(facet, year) + anchor,
+                     searchable: facet.searchable %>
         </li>
       <% end %>
     </ol>
