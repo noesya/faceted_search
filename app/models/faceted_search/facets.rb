@@ -19,10 +19,17 @@ module FacetedSearch
     end
 
     def path_for(facet, value)
-      p = path
-      list.each do |current_facet|
-        p += current_facet == facet ? current_facet.path_for(value)
-                                    : current_facet.path
+      if facet.path_pattern?
+        p = "#{facet.path_pattern.call(value)}#{path}"
+        list.each do |current_facet|
+          p += current_facet.path if current_facet != facet
+        end
+      else
+        p = path
+        list.each do |current_facet|
+          p += current_facet == facet ? current_facet.path_for(value)
+                                      : current_facet.path
+        end
       end
       p
     end

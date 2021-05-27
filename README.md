@@ -56,6 +56,15 @@ Create a model defining your facets:
         #     children.order(:title)
         #   }
         # }
+
+        # Other option, with searchable (SEO) categories
+        filter_with_full_tree :categories, {
+          habtm: true,
+          searchable: true,
+          path_pattern: Proc.new { |category_id|
+            Rails.application.routes.url_helpers.category_path(category_id)
+          }
+        }
       end
     end
 

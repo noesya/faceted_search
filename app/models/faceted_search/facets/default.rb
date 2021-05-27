@@ -17,6 +17,14 @@ module FacetedSearch
       @options[:searchable] || false
     end
 
+    def path_pattern
+      @options[:path_pattern] || false
+    end
+
+    def path_pattern?
+      @options.has_key? :path_pattern
+    end
+
     def kind
       self.class.to_s
     end
