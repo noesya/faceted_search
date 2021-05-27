@@ -23,7 +23,7 @@
           path = facet.facets.path_for(facet, identifier)
           %>
           <li class="faceted__facet__tree__value">
-            <%= link_to display_value, path, rel: facet.searchable ? '' : 'nofollow' %>
+            <%= render 'faceted_search/link', display_value: display_value, path: path, searchable: facet.searchable %>
           </li>
         <% end %>
       </ol>

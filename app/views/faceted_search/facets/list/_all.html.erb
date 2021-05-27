@@ -8,7 +8,7 @@
         display_value = facet.display_method.call(value)
         %>
         <li class="faceted__facet__list__value <%= 'faceted__facet__list__value--selected' if facet.value_selected?(identifier) %>">
-          <%= link_to display_value, facet.facets.path_for(facet, identifier) + anchor, rel: facet.searchable ? '' : 'nofollow' %>
+          <%= render 'faceted_search/link', display_value: display_value, path: facet.facets.path_for(facet, identifier) + anchor, searchable: facet.searchable %>
         </li>
       <% end %>
     </ol>
