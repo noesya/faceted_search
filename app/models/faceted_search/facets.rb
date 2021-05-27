@@ -31,6 +31,7 @@ module FacetedSearch
                                       : current_facet.path
         end
       end
+      p.delete_suffix!(path) if p.end_with?(path)
       p
     end
 
