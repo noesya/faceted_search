@@ -14,7 +14,10 @@
                   onclick="window.location.href='<%= path %>'"
                   <%= 'checked' if selected %>
                   />
-          <%= link_to name, path, rel: facet.searchable ? '' : 'nofollow' %>
+          <%= render 'faceted_search/link',
+                      display_value: name,
+                      path: path,
+                      searchable: facet.searchable %>
         </li>
       <% end %>
     </ul>
