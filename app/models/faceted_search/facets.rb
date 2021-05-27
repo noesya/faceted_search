@@ -27,11 +27,11 @@ module FacetedSearch
       else
         p = path
         list.each do |current_facet|
+          next if current_facet.path_pattern?
           p += current_facet == facet ? current_facet.path_for(value)
                                       : current_facet.path
         end
       end
-      p.delete_suffix!(path) if p.end_with?(path)
       p
     end
 
