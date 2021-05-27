@@ -1,11 +1,10 @@
 <% values.each do |value| %>
-  <%
-  display_value = facet.display_method.call(value)
-  identifier = value.send facet.find_by
-  path = facet.facets.path_for(facet, identifier)
-  %>
+  <% identifier = value.send facet.find_by %>
   <li class="faceted__facet__full_tree__value<%= '--selected' if facet.value_selected?(identifier) %> dd-item <%= 'dd-item--selected' if facet.value_selected?(identifier) %>">
-    <%= render 'faceted_search/link', display_value: display_value, path: path, searchable: facet.searchable %>
+    <%= render 'faceted_search/link',
+                display_value: facet.display_method.call(value),
+                path: facet.facets.path_for(facet, identifier),
+                searchable: facet.searchable %>
     <% child_values = facet.values_with_parent(value.id) %>
     <% if child_values.any? %>
       <ol class="dd-list">
