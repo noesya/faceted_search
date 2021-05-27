@@ -1,0 +1,5 @@
+<% if searchable %>
+  <%= link_to display_value, path %>
+<% else %>
+  <%= link_to display_value, path, rel: 'nofollow' %>
+<% end %>
