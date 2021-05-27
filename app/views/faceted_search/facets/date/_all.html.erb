@@ -4,7 +4,7 @@
     <ol class="faceted__facet__date list-unstyled">
       <% facet.values.each do |year| %>
         <li class="faceted__facet__date__value <%= 'faceted__facet__date__value--selected' if facet.value_selected?(year) %>">
-          <%= link_to year, facet.facets.path_for(facet, year) + anchor %>
+          <%= link_to year, facet.facets.path_for(facet, year) + anchor, rel: facet.searchable ? '' : 'nofollow' %>
         </li>
       <% end %>
     </ol>

@@ -18,7 +18,7 @@ reset ||= 'Reset'
     <%= render partial, facet: facet, anchor: anchor %>
   <% end %>
   <li class="faceted__facet__reinit">
-    <a href="<%= facets.path %>">
+    <a href="<%= facets.path %>" rel="nofollow">
       <i class="fas fa-ban"></i>
       <%= reset %>
     </a>

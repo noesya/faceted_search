@@ -13,6 +13,10 @@ module FacetedSearch
       @options[:title] || name.to_s.humanize.titleize
     end
 
+    def searchable
+      @options[:searchable] || false
+    end
+
     def kind
       self.class.to_s
     end
