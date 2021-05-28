@@ -53,7 +53,12 @@ module FacetedSearch
     end
 
     def has_params?
-      params.values.select(&:present?).any?
+      any = false
+      list.each do |facet|
+        next if facet.hide_in_selected?
+        any = true if facet.params.present?
+      end
+      any
     end
 
     protected
