@@ -36,14 +36,16 @@ module FacetedSearch
     end
 
     def results
-      unless @results
-        scope = @model
-        list.each do |facet|
-          scope = facet.add_scope(scope) unless facet.ignore_scope?
-        end
-        @results = scope.distinct
+      @results ||= results_except []
+    end
+
+    def results_except(*facet_names)
+      scope = @model
+      list.each do |facet|
+        next if facet_names.include?(facet.name) || facet.ignore_scope?
+        scope = facet.add_scope(scope)
       end
-      @results
+      scope.distinct
     end
 
     def model_table_name
