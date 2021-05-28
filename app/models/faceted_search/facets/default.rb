@@ -29,6 +29,10 @@ module FacetedSearch
       @options[:ignore_scope] || false
     end
 
+    def hide_in_selected?
+      @options[:hide_in_selected] || path_pattern?
+    end
+
     def kind
       self.class.to_s
     end
