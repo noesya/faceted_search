@@ -26,7 +26,10 @@ module FacetedSearch
     end
 
     def values
-      @values ||= order == :asc ? source : source.reverse
+      @values ||= begin
+        values = (source | params_array.map(&:to_i)).sort
+        order == :asc ? values : values.reverse
+      end
     end
   end
 end

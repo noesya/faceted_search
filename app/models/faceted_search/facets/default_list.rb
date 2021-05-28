@@ -29,7 +29,8 @@ module FacetedSearch
       @values ||= begin
         joined_table = facets.model_table_name.to_sym
         results = params_array.blank? ? facets.results : facets.results_except(@name)
-        source.all.joins(joined_table).where(joined_table => { id: results }).distinct
+        values = source.all.joins(joined_table)
+        values.where(joined_table => { id: results }).or(values.where(id: params_array)).distinct
       end
     end
 

@@ -31,7 +31,7 @@ module FacetedSearch
 
     def values
       @values ||= begin
-        values = source.pluck(field).uniq.reject(&:blank?).sort
+        values = (source.pluck(field).uniq.reject(&:blank?) | params_array.compact).sort
         order == :asc ? values : values.reverse
       end
     end
