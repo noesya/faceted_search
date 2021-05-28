@@ -25,6 +25,10 @@ module FacetedSearch
       @options.has_key? :path_pattern
     end
 
+    def ignore_scope?
+      @options[:ignore_scope] || false
+    end
+
     def kind
       self.class.to_s
     end

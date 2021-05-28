@@ -39,7 +39,7 @@ module FacetedSearch
       unless @results
         scope = @model
         list.each do |facet|
-          scope = facet.add_scope(scope)
+          scope = facet.add_scope(scope) unless facet.ignore_scope?
         end
         @results = scope.distinct
       end
