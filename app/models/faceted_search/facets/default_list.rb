@@ -26,11 +26,11 @@ module FacetedSearch
     # Show all values that have corresponding results with the current params.
     # This is a regular SQL inner join.
     def values
-      unless @values
+      @values ||= begin
         joined_table = facets.model_table_name.to_sym
-        @values = source.all.joins(joined_table).where(joined_table => { id: facets.results }).distinct
+        results = params_array.blank? ? facets.results : facets.results_except(@name)
+        source.all.joins(joined_table).where(joined_table => { id: results }).distinct
       end
-      @values
     end
 
     def value_selected?(value)

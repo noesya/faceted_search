@@ -2,7 +2,11 @@ module FacetedSearch
   class Facets::Date < Facets::DefaultList
 
     def source
-      @options[:source] || @facets.model.send(:all).pluck(name).compact.map(&:year).uniq.sort
+      @source ||= begin
+        next @options[:source] if @options[:source].present?
+        results = params_array.blank? ? facets.results : facets.results_except(@name)
+        results.send(:all).pluck(name).compact.map(&:year).uniq.sort
+      end
     end
 
     def order
@@ -19,11 +23,7 @@ module FacetedSearch
     end
 
     def values
-      unless @values
-        @values = source
-        @values.reverse! unless order == :asc
-      end
-      @values
+      @values ||= order == :asc ? source : source.reverse
     end
   end
 end
