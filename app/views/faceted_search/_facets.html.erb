@@ -6,7 +6,10 @@ reset ||= 'Reset'
 <% if facets.has_params? %>
   <ul class="faceted__facets-selected list-inline">
     <% facets.list.each do |facet| %>
-      <% partial = "#{facet.kind.underscore}/selected" %>
+      <%
+      next if facet.path_pattern?
+      partial = "#{facet.kind.underscore}/selected"
+      %>
       <%= render partial, facet: facet %>
     <% end %>
   </ul>
