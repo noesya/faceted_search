@@ -1,0 +1,25 @@
+<li>
+  <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
+  <%
+  value = params[:facets][facet.name] if params.dig(:facets, facet.name).present?
+  value ||= facet.default_value
+  %>
+  <form action="<%= anchor %>" class="faceted__facet__text form-inline">
+    <% facet.facets.list.each do |f| %>
+      <% next if f == facet || f.params.blank? || f.path_pattern? %>
+      <input  type="hidden"
+              name="facets[<%= f.name %>]"
+              value="<%= f.params %>" />
+    <% end %>
+    <input  type="range"
+            name="facets[<%= facet.name %>]"
+            min="<%= facet.min %>"
+            max="<%= facet.max %>"
+            step="<%= facet.step %>"
+            value="<%= value %>"
+            class="form-control-range" />
+    <input  type="submit"
+            class="btn btn-light"
+            value="OK" />
+  </form>
+</li>

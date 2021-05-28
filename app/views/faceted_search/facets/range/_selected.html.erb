@@ -1,0 +1,7 @@
+<% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>
+<% unless value.blank? %>
+  <%= render 'faceted_search/facets/facet-selected',
+              title: facet.title,
+              value: value,
+              path: facet.facets.path_for(facet, nil) %>
+<% end %>

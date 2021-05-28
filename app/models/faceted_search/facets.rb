@@ -84,6 +84,10 @@ module FacetedSearch
       add_facet FullTree, value, options
     end
 
+    def filter_with_range(value, options = {})
+      add_facet Range, value, options
+    end
+
     def params_for(value)
       @params[value] if @params.has_key? value
     end
