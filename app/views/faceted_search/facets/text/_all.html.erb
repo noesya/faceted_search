@@ -3,8 +3,7 @@
   <% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>
   <form action="<%= anchor %>" class="faceted__facet__text form-inline">
     <% facet.facets.list.each do |f| %>
-      <% next if f == facet %>
-      <% next if f.params.blank? %>
+      <% next if f == facet || f.params.blank? || f.path_pattern? %>
       <input  type="hidden"
               name="facets[<%= f.name %>]"
               value="<%= f.params %>" />
