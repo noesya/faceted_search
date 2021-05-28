@@ -4,7 +4,7 @@
     <%= render 'faceted_search/facets/facet-selected',
                 title: facet.title,
                 value: facet.display_method.call(value),
-                path: facet.facets.path_for(facet, identifier) %>
+                path: facet.facets.path_for(facet, identifier) + anchor %>
   <% end %>
   <% child_values = facet.values_with_parent(value.id) %>
   <% if child_values.any? %>

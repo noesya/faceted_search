@@ -3,5 +3,5 @@
   <%= render 'faceted_search/facets/facet-selected',
               title: facet.title,
               value: value,
-              path: facet.facets.path_for(facet, nil) %>
+              path: facet.facets.path_for(facet, nil) + anchor %>
 <% end %>

@@ -4,7 +4,7 @@
       <%= render  'faceted_search/facets/facet-selected',
                   title: facet.title,
                   value: year,
-                  path: facet.facets.path_for(facet, year) %>
+                  path: facet.facets.path_for(facet, year) + anchor %>
     <% end %>
   <% end %>
 <% end %>

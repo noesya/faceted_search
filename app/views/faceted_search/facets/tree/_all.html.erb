@@ -6,7 +6,7 @@
         <%
         display_value = facet.display_method.call(facet.selected_object)
         identifier = facet.selected_object.send facet.find_by
-        path = facet.facets.path_for(facet, identifier)
+        path = facet.facets.path_for(facet, identifier) + anchor
         %>
         <div class="faceted__facet__tree__back">
           <%= link_to path, rel: 'nofollow' do %>
@@ -20,7 +20,7 @@
           <%
           display_value = facet.display_method.call(value)
           identifier = value.send facet.find_by
-          path = facet.facets.path_for(facet, identifier)
+          path = facet.facets.path_for(facet, identifier) + anchor
           %>
           <li class="faceted__facet__tree__value">
             <%= render 'faceted_search/link',

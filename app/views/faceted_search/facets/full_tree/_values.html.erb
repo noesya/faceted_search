@@ -3,12 +3,12 @@
   <li class="faceted__facet__full_tree__value<%= '--selected' if facet.value_selected?(identifier) %> dd-item <%= 'dd-item--selected' if facet.value_selected?(identifier) %>">
     <%= render 'faceted_search/link',
                 display_value: facet.display_method.call(value),
-                path: facet.facets.path_for(facet, identifier),
+                path: facet.facets.path_for(facet, identifier) + anchor,
                 searchable: facet.searchable %>
     <% child_values = facet.values_with_parent(value.id) %>
     <% if child_values.any? %>
       <ol class="dd-list">
-        <%= render 'faceted_search/facets/full_tree/values', values: child_values, facet: facet %>
+        <%= render 'faceted_search/facets/full_tree/values', values: child_values, facet: facet, anchor: anchor %>
       </ol>
     <% end %>
   </li>
