@@ -3,9 +3,12 @@ module FacetedSearch
 
     def source
       @source ||= begin
-        next @options[:source] if @options[:source].present?
-        results = params_array.blank? ? facets.results : facets.results_except(@name)
-        results.send(:all).pluck(name).compact.map(&:year).uniq.sort
+        if @options[:source].present?
+          @options[:source]
+        else
+          results = params_array.blank? ? facets.results : facets.results_except(@name)
+          results.send(:all).pluck(name).compact.map(&:year).uniq.sort
+        end
       end
     end
 

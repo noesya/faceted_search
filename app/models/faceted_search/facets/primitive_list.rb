@@ -3,9 +3,12 @@ module FacetedSearch
 
     def source
       @source ||= begin
-        next @options[:source] if @options[:source].present?
-        results = params_array.compact.blank? ? facets.results : facets.results_except(@name)
-        results.send(:all).where("#{field} IS NOT NULL")
+        if @options[:source].present?
+          @options[:source]
+        else
+          results = params_array.compact.blank? ? facets.results : facets.results_except(@name)
+          results.send(:all).where("#{field} IS NOT NULL")
+        end
       end
       @options[:source].where("#{field} IS NOT NULL")
     end
