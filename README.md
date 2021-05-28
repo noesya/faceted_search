@@ -65,6 +65,15 @@ Create a model defining your facets:
             Rails.application.routes.url_helpers.category_path(category_id)
           }
         }
+
+        # Filter with range input
+        filter_with_range :distance, {
+          min: 10,
+          max: 200,
+          step: 10,
+          default_value: 50,
+          hide_in_selected: true
+        }
       end
     end
 
