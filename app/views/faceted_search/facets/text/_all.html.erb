@@ -1,3 +1,4 @@
+<% anchor ||= '' %>
 <li>
   <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
   <% value = params[:facets][facet.name] if params[:facets] && params[:facets].has_key?(facet.name) %>

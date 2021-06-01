@@ -1,3 +1,4 @@
+<% anchor ||= '' %>
 <% values.each do |value| %>
   <% identifier = value.send facet.find_by %>
   <li class="faceted__facet__full_tree__value<%= '--selected' if facet.value_selected?(identifier) %> dd-item <%= 'dd-item--selected' if facet.value_selected?(identifier) %>">

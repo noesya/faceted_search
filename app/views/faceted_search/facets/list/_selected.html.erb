@@ -1,3 +1,4 @@
+<% anchor ||= '' %>
 <% if facet.values.any? %>
   <% facet.values.each do |value| %>
     <% identifier = value.send facet.find_by %>

@@ -1,3 +1,4 @@
+<% anchor ||= '' %>
 <% if facet.values.any? %>
   <%= render  'faceted_search/facets/full_tree/values-selected',
               values: facet.values_with_parent(nil),
