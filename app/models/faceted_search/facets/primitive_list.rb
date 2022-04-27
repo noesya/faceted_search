@@ -4,13 +4,12 @@ module FacetedSearch
     def source
       @source ||= begin
         if @options[:source].present?
-          @options[:source]
+          @options[:source].where("#{field} IS NOT NULL")
         else
           results = params_array.compact.blank? ? facets.results : facets.results_except(@name)
           results.send(:all).where("#{field} IS NOT NULL")
         end
       end
-      @options[:source].where("#{field} IS NOT NULL")
     end
 
     def order
