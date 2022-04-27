@@ -1,3 +1,3 @@
 module FacetedSearch
-  VERSION = '3.5.12'
+  VERSION = '3.5.13'
 end
