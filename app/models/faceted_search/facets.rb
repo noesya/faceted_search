@@ -39,10 +39,10 @@ module FacetedSearch
       @results ||= results_except []
     end
 
-    def results_except(*facet_names)
+    def results_except(*facet_param_names)
       scope = @model
       list.each do |facet|
-        next if facet_names.include?(facet.name) || facet.ignore_scope?
+        next if facet_param_names.include?(facet.param_name) || facet.ignore_scope?
         scope = facet.add_scope(scope)
       end
       scope.distinct
@@ -95,12 +95,13 @@ module FacetedSearch
       add_facet Range, value, options
     end
 
-    def params_for(value)
-      @params[value] if @params.has_key? value
+    def params_for(value, options)
+      param_name = (options[:param_name] || value).to_sym
+      @params[param_name] if @params.has_key? param_name
     end
 
     def add_facet(kind, value, options)
-      @list << kind.new(value, params_for(value), self, options)
+      @list << kind.new(value, params_for(value, options), self, options)
     end
   end
 end

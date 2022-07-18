@@ -6,7 +6,7 @@ module FacetedSearch
         if @options[:source].present?
           @options[:source]
         else
-          results = params_array.blank? ? facets.results : facets.results_except(@name)
+          results = params_array.blank? ? facets.results : facets.results_except(param_name)
           results.send(:all).pluck(name).compact.map(&:year).uniq.sort
         end
       end

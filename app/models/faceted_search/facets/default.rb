@@ -33,6 +33,10 @@ module FacetedSearch
       @options[:hide_in_selected] || path_pattern?
     end
 
+    def param_name
+      @options[:param_name] || name
+    end
+
     def kind
       self.class.to_s
     end
@@ -48,7 +52,7 @@ module FacetedSearch
 
     def path(custom_params = @params)
       return '' if custom_params.blank?
-      "&facets[#{name}]=#{custom_params}"
+      "&facets[#{param_name}]=#{custom_params}"
     end
 
     def to_s
