@@ -20,10 +20,12 @@ reset ||= 'Reset'
     <% partial = "#{facet.kind.underscore}/all" %>
     <%= render partial, facet: facet, anchor: anchor %>
   <% end %>
-  <li class="faceted__facet__reinit">
-    <a href="<%= facets.path %>" rel="nofollow">
-      <i class="fas fa-ban"></i>
-      <%= reset %>
-    </a>
-  </li>
+  <% if facets.has_params? %>
+    <li class="faceted__facet__reinit">
+      <a href="<%= facets.path %>" rel="nofollow">
+        <i class="fas fa-ban"></i>
+        <%= reset %>
+      </a>
+    </li>
+  <% end %>
 </ul>
