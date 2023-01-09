@@ -49,6 +49,7 @@ Create a model defining your facets:
             children.order(:title)
           }
         }
+        filter_with_boolean :active
         # Other tree option, shows all values
         # filter_with_full_tree :categories, {
         #   habtm: true,

@@ -3,6 +3,7 @@ class Item::Facets < FacetedSearch::Facets
     super
     @model = Item.all
     filter_with_text :title
+    filter_with_boolean :active
     filter_with_full_tree :categories, {
       habtm: true
     }

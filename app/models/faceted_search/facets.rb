@@ -95,6 +95,10 @@ module FacetedSearch
       add_facet Range, value, options
     end
 
+    def filter_with_boolean(value, options = {})
+      add_facet Boolean, value, options
+    end
+
     def params_for(value, options)
       param_name = (options[:param_name] || value).to_sym
       @params[param_name] if @params.has_key? param_name

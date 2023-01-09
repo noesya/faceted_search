@@ -1,0 +1,15 @@
+<% 
+anchor ||= ''
+selected = facet.selected?
+target = !selected
+path = facet.facets.path_for(facet, target) + anchor
+%>
+<li>
+  <label>
+    <input  type="checkbox"
+            onclick="window.location.href='<%= path %>'"
+            <%= 'checked' if facet.selected? %>
+          />
+    <%= facet.title %>
+  </label>
+</li>
