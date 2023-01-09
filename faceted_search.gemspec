@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.name        = "faceted_search"
   spec.version     = FacetedSearch::VERSION
   spec.authors     = ["Arnaud Levy", "Sébastien Gaya", "Sébastien Moulène"]
-  spec.email       = ["alevy@lespoupees.paris", "sebastien.gaya@gmail.com", "sebousan@gmail.com"]
-  spec.homepage    = "http://github.com/lespoupeesrusses/faceted_search"
+  spec.email       = ["arnaud.levy@noesya.coop", "sebastien.gaya@gmail.com", "sebousan@gmail.com"]
+  spec.homepage    = "http://github.com/noesya/faceted_search"
   spec.summary     = "Faceted search with Active Record"
   spec.description = "All you need to create a faceted search, as simple as possible"
   spec.license     = "MIT"
@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "bootstrap"
   spec.add_development_dependency "kaminari"
-  spec.add_development_dependency 'font-awesome-sass'
+  spec.add_development_dependency "font-awesome-sass"
 end
