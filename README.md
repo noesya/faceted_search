@@ -43,6 +43,9 @@ Create a model defining your facets:
         filter_with_list :kinds, {
           habtm: true
         }
+        filter_with_list :style, {
+          habtm: false
+        }
         filter_with_tree :categories, {
           habtm: true,
           children_scope: Proc.new { |children|
