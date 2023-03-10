@@ -1,6 +1,7 @@
 item_1:
   title: 'Item 1'
   active: true
+  style: style_1
   categories:
     - category_1
   products:
@@ -10,17 +11,20 @@ item_1:
 item_2:
   title: 'Item 2'
   active: true
+  style: style_1
   products:
     - product_2
     - product_3
 item_3:
   title: 'Item 3'
   active: true
+  style: style_2
   categories:
     - category_2
 item_4:
   title: 'Item 4'
   active: true
+  style: style_2
   kinds:
     - kind_1
     - kind_3

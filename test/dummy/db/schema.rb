@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_112344) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_152104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_112344) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "active"
+    t.bigint "style_id"
+    t.index ["style_id"], name: "index_items_on_style_id"
   end
 
   create_table "items_kinds", id: false, force: :cascade do |t|
@@ -56,5 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_112344) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "styles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "items", "styles"
 end

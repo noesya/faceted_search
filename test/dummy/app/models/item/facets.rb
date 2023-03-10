@@ -14,5 +14,8 @@ class Item::Facets < FacetedSearch::Facets
     filter_with_checkboxes :kinds, {
       habtm: true
     }
+    filter_with_list :style, {
+      habtm: false
+    }
   end
 end

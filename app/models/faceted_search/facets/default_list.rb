@@ -18,20 +18,15 @@ module FacetedSearch
     # and return the modified scope
     def add_scope(scope)
       return scope if params_array.blank?
-
-      habtm?  ? scope.joins(name).where(name => { find_by => params_array })
-              : scope.where(name => params_array)
+      habtm?  ? add_scope_with_habtm_true(scope)
+              : add_scope_with_habtm_false(scope)
     end
 
     # Show all values that have corresponding results with the current params.
     # This is a regular SQL inner join.
     def values
-      @values ||= begin
-        joined_table = facets.model_table_name.to_sym
-        results = params_array.blank? ? facets.results : facets.results_except(param_name)
-        values = source.all.joins(joined_table)
-        values.where(joined_table => { id: results }).or(values.where(id: params_array)).distinct
-      end
+      @values ||= habtm?  ? values_with_habtm_true
+                          : values_with_habtm_false
     end
 
     def value_selected?(value)
@@ -47,6 +42,31 @@ module FacetedSearch
     end
 
     protected
+
+    def add_scope_with_habtm_true(scope)
+      scope.joins(name).where(name => { find_by => params_array })
+    end
+
+    def add_scope_with_habtm_false(scope)
+      scope.where(name => params_array)
+    end
+
+    def results
+      params_array.blank? ? facets.results : facets.results_except(param_name)
+    end
+
+    def values_with_habtm_true
+      joined_table = facets.model_table_name.to_sym
+      values = source.all.joins(joined_table)
+      values.where(joined_table => { id: results }).or(values.where(id: params_array)).distinct
+    rescue
+    end
+
+    def values_with_habtm_false
+      property = "#{name}_id"
+      ids = results.pluck property
+      source.where(id: ids)
+    end
 
     def params_array
       @params_array ||= @params.to_s.split(',')
