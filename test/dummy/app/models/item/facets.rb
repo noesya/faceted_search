@@ -15,7 +15,6 @@ class Item::Facets < FacetedSearch::Facets
       habtm: true
     }
     filter_with_list :style, {
-      find_by: :title,
       habtm: false
     }
   end
