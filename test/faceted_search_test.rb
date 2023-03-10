@@ -50,6 +50,33 @@ class FacetedSearch::Test < ActiveSupport::TestCase
     assert_equal 1, @facets.results.count
   end
 
+  test "items filtered by 3 facets with results" do
+    @facets = Item::Facets.new({
+      kinds: "#{kinds(:kind_2).id}",
+      categories: "#{categories(:category_1).id}",
+      style: "#{styles(:style_1).id}"
+    })
+    assert_equal 1, @facets.results.count
+  end
+
+  test "items filtered by 3 facets with no results" do
+    @facets = Item::Facets.new({
+      kinds: "#{kinds(:kind_2).id}",
+      categories: "#{categories(:category_1).id}",
+      style: "#{styles(:style_2).id}"
+    })
+    assert_equal 0, @facets.results.count
+  end
+
+  test "items filtered by 3 facets with multiple values" do
+    @facets = Item::Facets.new({
+      kinds: "#{kinds(:kind_1).id},#{kinds(:kind_2).id}",
+      categories: "#{categories(:category_1).id},#{categories(:category_2).id}",
+      style: "#{styles(:style_1).id}"
+    })
+    assert_equal 1, @facets.results.count
+  end
+
   test "items searched" do
     @facets = Item::Facets.new({
       title: 'Item 1'

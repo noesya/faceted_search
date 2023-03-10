@@ -9,6 +9,7 @@
 #
 
 class Item < ApplicationRecord
+  belongs_to :style, optional: true
   has_and_belongs_to_many :kinds
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :products

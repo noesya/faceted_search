@@ -17,11 +17,14 @@ p2 = Product.find_or_create_by title: "Product 2"
 p3 = Product.find_or_create_by title: "Product 3"
 p4 = Product.find_or_create_by title: "Product 4"
 
+s1 = Style.find_or_create_by title: "Style 1"
+s2 = Style.find_or_create_by title: "Style 2"
 
 i1 = Item.find_or_create_by title: "Item 1"
 i1.categories = [c1]
 i1.products = [p1]
 i1.kinds = [k2]
+i1.style = s1
 i1.active = true
 i1.save
 
@@ -29,17 +32,20 @@ i2 = Item.find_or_create_by title: "Item 2"
 i2.products = [p3, p2]
 i2.categories = [c3, c3a]
 i2.active = true
+i2.style = s1
 i2.save
 
 i3 = Item.find_or_create_by title: "Item 3"
 i3.categories = [c2]
 i3.active = true
+i3.style = s2
 i3.save
 
 i4 = Item.find_or_create_by title: "Item 4"
 i4.kinds = [k1, k3]
 i4.categories = [c2, c2a]
 i4.active = true
+i4.style = s2
 i4.save
 
 i5 = Item.find_or_create_by title: "Item 5"
