@@ -1,7 +1,7 @@
 # FacetedSearch
 All you need to create a faceted search, as simple as possible
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/70579009d11cfa0d7cac/maintainability)](https://codeclimate.com/github/lespoupeesrusses/faceted_search/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/70579009d11cfa0d7cac/maintainability)](https://codeclimate.com/github/noesya/faceted_search/maintainability)
 
 ## Installation
 Add this line to your application's Gemfile:
