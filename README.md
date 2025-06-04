@@ -1,7 +1,7 @@
 # FacetedSearch
 All you need to create a faceted search, as simple as possible
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/70579009d11cfa0d7cac/maintainability)](https://codeclimate.com/github/noesya/faceted_search/maintainability)
+[![Maintainability](https://qlty.sh/badges/42826402-b514-4e5a-8181-f4e51cb24fbf/maintainability.svg)](https://qlty.sh/gh/noesya/projects/faceted_search)
 
 ## Installation
 Add this line to your application's Gemfile:
