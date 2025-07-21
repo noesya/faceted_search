@@ -2,7 +2,7 @@
 <li>
   <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
   <%
-  value = params[:facets][facet.param_name] if params.dig(:facets, facet.param_name).present?
+  value = facet.params if facet.params.present?
   value ||= facet.default_value
   %>
   <form action="<%= anchor %>" class="faceted__facet__text form-inline">

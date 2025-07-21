@@ -1,7 +1,6 @@
 <% anchor ||= '' %>
 <li>
   <% unless facet.title.blank? %><b><%= facet.title %></b><% end %>
-  <% value = params[:facets][facet.param_name] if params[:facets] && params[:facets].has_key?(facet.param_name) %>
   <form action="<%= anchor %>" class="faceted__facet__text form-inline">
     <% facet.facets.list.each do |f| %>
       <% next if f == facet || f.params.blank? || f.path_pattern? %>
@@ -12,7 +11,7 @@
     <input  type="search"
             name="facets[<%= facet.param_name %>]"
             placeholder="<%= facet.placeholder %>"
-            value="<%= value %>"
+            value="<%= facet.params %>"
             class="form-control" />
     <input  type="submit"
             class="btn btn-light"
