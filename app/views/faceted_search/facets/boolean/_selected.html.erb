@@ -1,6 +1,5 @@
 <% anchor ||= '' %>
-<% value = params[:facets][facet.param_name] if params[:facets] && params[:facets].has_key?(facet.param_name) %>
-<% unless value.blank? %>
+<% if facet.selected? %>
   <%= render 'faceted_search/facets/facet-selected',
               title: facet.title,
               value: facet.title,
